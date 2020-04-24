@@ -52,7 +52,7 @@ public class Main {
     }
 
     static void contactModify(String name){
-        System.out.println("Выберите действие: 1. Изменить контакт. 2. Удалить контакт. 3. Главное меню.");
+        System.out.println("Выберите действие: 1. Изменить телефон. 2. Удалить контакт. 3. Главное меню. 4. Изменить имя.");
         Scanner scan = new Scanner(System.in);
         int choice = scan.nextInt();
 
@@ -68,6 +68,16 @@ public class Main {
             System.out.println("Контакт "+name+" удален.");
             contactMain();
         } else if (choice==3){
+            contactMain();
+        }else if (choice==4){
+            System.out.println("Введите новое имя контакта "+name);
+            Scanner scan1 = new Scanner(System.in);
+            String nameUpd = scan1.nextLine();
+             int value = map.get(name);
+            map.put(nameUpd, value);
+
+            System.out.println("Контакт "+name+" изменен на "+nameUpd);
+            map.remove(name);
             contactMain();
         }
         else {
