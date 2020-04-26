@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PhoneBook.iml" filepath="$PROJECT_DIR$/.idea/modules/PhoneBook.iml" group="PhoneBook" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lesson1/Menu/lesson1-Menu.iml" filepath="$PROJECT_DIR$/.idea/modules/lesson1/Menu/lesson1-Menu.iml" group="PhoneBook/lesson1-Menu" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lesson1/MenuItemLogic/lesson1-MenuItemLogic.iml" filepath="$PROJECT_DIR$/.idea/modules/lesson1/MenuItemLogic/lesson1-MenuItemLogic.iml" group="PhoneBook/lesson1-MenuItemLogic" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lesson1/MenuItemLogic/lesson1-MenuItemLogic_main.iml" filepath="$PROJECT_DIR$/.idea/modules/lesson1/MenuItemLogic/lesson1-MenuItemLogic_main.iml" group="PhoneBook/lesson1-MenuItemLogic" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lesson1/MenuItemLogic/lesson1-MenuItemLogic_test.iml" filepath="$PROJECT_DIR$/.idea/modules/lesson1/MenuItemLogic/lesson1-MenuItemLogic_test.iml" group="PhoneBook/lesson1-MenuItemLogic" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lesson1/MenuItems/lesson1-MenuItems.iml" filepath="$PROJECT_DIR$/.idea/modules/lesson1/MenuItems/lesson1-MenuItems.iml" group="PhoneBook/lesson1-MenuItems" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lesson1/MenuItems/lesson1-MenuItems_main.iml" filepath="$PROJECT_DIR$/.idea/modules/lesson1/MenuItems/lesson1-MenuItems_main.iml" group="PhoneBook/lesson1-MenuItems" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lesson1/MenuItems/lesson1-MenuItems_test.iml" filepath="$PROJECT_DIR$/.idea/modules/lesson1/MenuItems/lesson1-MenuItems_test.iml" group="PhoneBook/lesson1-MenuItems" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lesson1/Menu/lesson1-Menu_main.iml" filepath="$PROJECT_DIR$/.idea/modules/lesson1/Menu/lesson1-Menu_main.iml" group="PhoneBook/lesson1-Menu" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lesson1/Menu/lesson1-Menu_test.iml" filepath="$PROJECT_DIR$/.idea/modules/lesson1/Menu/lesson1-Menu_test.iml" group="PhoneBook/lesson1-Menu" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util.iml" group="PhoneBook/util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util_main.iml" group="PhoneBook/util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util_test.iml" group="PhoneBook/util" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,143 @@
+type: edu
+files:
+- name: test/Tests.java
+  visible: false
+  text: |
+    import org.junit.Rule;
+    import org.junit.Test;
+    import org.junit.contrib.java.lang.system.SystemOutRule;
+    import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
+
+    import static org.junit.Assert.assertEquals;
+    import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
+
+    public class Tests {
+      @Rule
+      public final TextFromStandardInputStream systemInMock = emptyStandardInputStream();
+      @Rule
+      public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+
+      @Test
+      public void testSolution() {
+        Menu mainMenu = new MainMenu();
+
+        systemInMock.provideLines("5");
+        mainMenu.interactWithMenu();
+        String validResult = systemOutRule.getLog();
+
+        assertEquals("Your input 5\n", validResult);
+        systemOutRule.clearLog();
+
+        systemInMock.provideLines("5aaa");
+        mainMenu.interactWithMenu();
+        String invalidResult = systemOutRule.getLog();
+
+        assertEquals("Invalid input data\n" +
+                "Please input required menu item:\n" +
+                "1 - Create\n" +
+                "2 - Search\n" +
+                "3 - Delete\n", invalidResult);
+      }
+
+
+    }
+  learner_created: false
+- name: src/Menu.java
+  visible: true
+  text: |
+    public interface Menu {
+
+        void printMenu();
+
+        void interactWithMenu();
+    }
+  learner_created: false
+- name: src/AbstractMenu.java
+  visible: true
+  text: |
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public abstract class AbstractMenu implements Menu {
+        protected List<String> items;
+        protected String MENU_HEADER = "Please input required menu item:";
+
+        public AbstractMenu() {
+            this.items = new ArrayList<>();
+        }
+
+        private void printMenuHeader() {
+            System.out.println(MENU_HEADER);
+        }
+
+        @Override
+        public void printMenu() {
+            printMenuHeader();
+
+            for (int i = 1; i <= items.size(); i++) {
+                String printableMenuItem = i + " - " + items.get(i - 1);
+                System.out.println(printableMenuItem);
+            }
+        }
+    }
+  learner_created: false
+- name: src/MainMenu.java
+  visible: true
+  placeholders:
+  - offset: 383
+    length: 461
+    placeholder_text: TODO
+    initial_state:
+      length: 4
+      offset: 382
+    initialized_from_dependency: false
+    possible_answer: |2-
+              Scanner scanner = new Scanner(System.in);
+              if (scanner.hasNext()) {
+                  try {
+                      int choiceNumber = scanner.nextInt();
+                      System.out.println("Your input " + choiceNumber);
+                  } catch (InputMismatchException mismatchException) {
+                      System.out.println("Invalid input data");
+                      this.printMenu();
+                  }
+              }
+    selected: true
+    status: Failed
+  text: |
+    import java.util.InputMismatchException;
+    import java.util.Scanner;
+
+    public class MainMenu extends AbstractMenu {
+
+        public MainMenu() {
+            super();
+            initMenuItems();
+        }
+
+        private void initMenuItems() {
+            this.items.add("Create");
+            this.items.add("Search");
+            this.items.add("Delete");
+        }
+
+        @Override
+        public void interactWithMenu() {
+    TODO
+        }
+    }
+  learner_created: false
+- name: src/Main.java
+  visible: true
+  text: |
+    public class Main {
+        public static void main(String[] args) {
+            Menu mainMenu = new MainMenu();
+            mainMenu.printMenu();
+            mainMenu.interactWithMenu();
+        }
+    }
+  learner_created: false
+status: Failed
+record: -1
+solution_hidden: true

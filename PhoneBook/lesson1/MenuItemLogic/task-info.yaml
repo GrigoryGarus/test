@@ -1,0 +1,303 @@
+type: edu
+files:
+- name: test/Tests.java
+  visible: false
+  text: |
+    import org.junit.Assert;
+    import org.junit.Rule;
+    import org.junit.Test;
+    import org.junit.contrib.java.lang.system.SystemOutRule;
+    import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
+
+    import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
+
+    public class Tests {
+      @Rule
+      public final TextFromStandardInputStream systemInMock = emptyStandardInputStream();
+      @Rule
+      public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+
+      @Test
+      public void testSolution() {
+       checkExistClasses();
+       checkValidCreation();
+      }
+
+      private void checkExistClasses() {
+        try {
+          Class.forName("Contact");
+        } catch (ClassNotFoundException e) {
+          Assert.fail("Class Contact not exists");
+        }
+
+        try {
+          Class.forName("MenuItemExecutor");
+        } catch (ClassNotFoundException e) {
+          Assert.fail("Class MenuItemExecutor not exists");
+        }
+      }
+
+      private void checkValidCreation() {
+        Menu mainMenu = new MainMenu();
+
+        systemInMock.provideLines("1\nИванов Иван Иванович; 18.06.1983; 34; 6.45; \"Работал над проектами: \"\"АБС\"\"; \"\"КВД\"\"\"");
+        mainMenu.interactWithMenu();
+
+        String[] results = systemOutRule.getLog().split("\n");
+        Assert.assertEquals("Contact{fullName='20=>2 \u001820= \u001820=>28G', dob=Sat Jun 18 00:00:00 MSD 1983, countOfProjects=34, rating=6.45, comments='\" 01>B0 =04 ?@>5:B0<8: \"\"\u0010\u0011!\"\" \"\"\u001A\u0012\u0014\"\"\"'}", results[3]);
+      }
+    }
+  learner_created: false
+- name: src/AbstractMenu.java
+  visible: true
+  text: |
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public abstract class AbstractMenu implements Menu {
+        protected List<MenuItem> items;
+        protected String MENU_HEADER = "Please input required menu item:";
+
+        public AbstractMenu() {
+            this.items = new ArrayList<>();
+        }
+
+        private void printMenuHeader() {
+            System.out.println(MENU_HEADER);
+        }
+
+        @Override
+        public void printMenu() {
+            printMenuHeader();
+
+            this.items.forEach(MenuItem::print);
+        }
+    }
+  learner_created: false
+- name: src/Main.java
+  visible: true
+  text: |
+    public class Main {
+        public static void main(String[] args) {
+            Menu mainMenu = new MainMenu();
+            mainMenu.printMenu();
+            mainMenu.interactWithMenu();
+        }
+    }
+  learner_created: false
+- name: src/MenuItem.java
+  visible: true
+  text: |
+    import java.util.List;
+
+    public class MenuItem {
+        private int number;
+        private String name;
+        private MenuItemExecutor executor;
+
+        public MenuItem(List items, String name, MenuItemExecutor executor) {
+            this.number = items.size() + 1;
+            this.name = name;
+            this.executor = executor;
+        }
+
+        public void interact() {
+            this.executor.execute();
+        }
+
+        public void print() {
+            String menuElement = this.number + " - " + name;
+            System.out.println(menuElement);
+        }
+    }
+  learner_created: false
+- name: src/MenuItemExecutor.java
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 160
+    placeholder_text: '//TODO: Тут вы должны реализовать интерфейс позволяющий шаблонизировать
+      работу и вызов элементов меню'
+    initial_state:
+      length: 101
+      offset: 0
+    initialized_from_dependency: false
+    possible_answer: |
+      public interface MenuItemExecutor {
+          void execute();
+      }
+    selected: true
+    status: Failed
+  text: '//TODO: Тут вы должны реализовать интерфейс позволяющий шаблонизировать работу
+    и вызов элементов меню'
+  learner_created: false
+- name: src/Menu.java
+  visible: true
+  text: |
+    public interface Menu {
+
+        void printMenu();
+
+        void interactWithMenu();
+    }
+  learner_created: false
+- name: src/MainMenu.java
+  visible: true
+  placeholders:
+  - offset: 757
+    length: 117
+    placeholder_text: '//TODO: тут вы должны реализовать выбор меню без использования
+      циклов. Подсказкой будет использование индексов списка'
+    initial_state:
+      length: 117
+      offset: 757
+    initialized_from_dependency: false
+    possible_answer: '                this.items.get(choiceNumber - 1).interact();'
+    selected: true
+    status: Failed
+  text: |
+    import java.util.InputMismatchException;
+    import java.util.Scanner;
+
+    public class MainMenu extends AbstractMenu {
+
+        public MainMenu() {
+            super();
+            initMenuItems();
+        }
+
+        private void initMenuItems() {
+            this.items.add(new MenuItem(this.items, "Create", new CreateMenuItem())
+            );
+            this.items.add(new MenuItem(this.items, "Search", new CreateMenuItem()));
+            this.items.add(new MenuItem(this.items, "Delete", new CreateMenuItem()));
+        }
+
+        @Override
+        public void interactWithMenu() {
+            Scanner scanner = new Scanner(System.in);
+            if (scanner.hasNext()) {
+                try {
+                    int choiceNumber = scanner.nextInt();
+                    System.out.println("Your input " + choiceNumber);
+
+    //TODO: тут вы должны реализовать выбор меню без использования циклов. Подсказкой будет использование индексов списка
+
+                } catch (InputMismatchException mismatchException) {
+                    System.out.println("Invalid input data");
+                    this.printMenu();
+                }
+            }
+        }
+    }
+  learner_created: false
+- name: src/CreateMenuItem.java
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 519
+    placeholder_text: "//TODO: Данный класс должен отвечать за обработку ввходных\
+      \ данных в формате - \nИванов Иван Иванович; 18.06.1983; 34; 6.45; \\\"Работ\
+      ал над проектами: \\\"\\\"АБС\\\"\\\"; \\\"\\\"КВД\\\"\\\"\\\"\nи создание о\
+      бъекта Contact"
+    initial_state:
+      length: 201
+      offset: 0
+    initialized_from_dependency: false
+    possible_answer: |
+      import java.text.ParseException;
+      import java.util.Arrays;
+      import java.util.Scanner;
+
+      public class CreateMenuItem implements MenuItemExecutor {
+          @Override
+          public void execute() {
+              System.out.println("Please insert new contact in follow format:\n" +
+                      "ФИО String; Дата_рождения Date; Кол-во_проектов Integer; Рейтинг Float; Комментарий String");
+
+              Scanner scanner = new Scanner(System.in);
+              String inputLine = scanner.nextLine();
+              String[] inputString = inputLine.split(";");
+
+              String fullName = inputString[0].trim();
+              String dob = inputString[1].trim();
+              String countOfProjects = inputString[2].trim();
+              String rating = inputString[3].trim();
+              String[] commentsArray = Arrays.copyOfRange(inputString, 4, inputString.length);
+              String comments = String.join("", Arrays.asList(commentsArray)).trim();
+
+              try {
+                  Contact contact = new Contact(
+                          fullName,
+                          dob,
+                          countOfProjects,
+                          rating,
+                          comments
+                  );
+                  System.out.println(contact);
+              } catch (ParseException e) {
+                  e.printStackTrace();
+              }
+          }
+      }
+    selected: true
+    status: Failed
+  text: "//TODO: Данный класс должен отвечать за обработку ввходных данных в форма\
+    те - \nИванов Иван Иванович; 18.06.1983; 34; 6.45; \\\"Работал над проектами:\
+    \ \\\"\\\"АБС\\\"\\\"; \\\"\\\"КВД\\\"\\\"\\\"\nи создание объекта Contact"
+  learner_created: false
+- name: src/Contact.java
+  visible: true
+  placeholders:
+  - offset: 264
+    length: 273
+    placeholder_text: |-
+      //TODO: тут вы должны создать конструктор который конвертирует строковые значения полученые в ходе разбора входных данных.
+      Иванов Иван Иванович; 18.06.1983; 34; 6.45; \"Работал над проектами: \"\"АБС\"\"; \"\"КВД\"\"\"
+      Необходимо распарсить String в соотвествующие типы
+    initial_state:
+      length: 269
+      offset: 263
+    initialized_from_dependency: false
+    possible_answer: |-
+      public Contact(String fullName, String dob, String countOfProjects, String rating, String comments) throws ParseException {
+
+              this.fullName = fullName;
+              this.dob = new SimpleDateFormat("dd.MM.yyyy").parse(dob);
+              this.countOfProjects = Integer.parseInt(countOfProjects);
+              this.rating = Float.parseFloat(rating);
+              this.comments = comments;
+          }
+    selected: true
+    status: Failed
+  text: |
+    import java.text.ParseException;
+    import java.text.SimpleDateFormat;
+    import java.util.Date;
+
+    public class Contact {
+        private String fullName;
+        private Date dob;
+        private Integer countOfProjects;
+        private Float rating;
+        private String comments;
+
+        //TODO: тут вы должны создать конструктор который конвертирует строковые значения полученые в ходе разбора входных данных.
+    Иванов Иван Иванович; 18.06.1983; 34; 6.45; \"Работал над проектами: \"\"АБС\"\"; \"\"КВД\"\"\"
+    Необходимо распарсить String в соотвествующие типы
+
+        @Override
+        public String toString() {
+            return "Contact{" +
+                    "fullName='" + fullName + '\'' +
+                    ", dob=" + dob +
+                    ", countOfProjects=" + countOfProjects +
+                    ", rating=" + rating +
+                    ", comments='" + comments + '\'' +
+                    '}';
+        }
+    }
+  learner_created: false
+status: Failed
+record: -1
+solution_hidden: true
