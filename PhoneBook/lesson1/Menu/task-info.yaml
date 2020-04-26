@@ -84,8 +84,8 @@ files:
 - name: src/MainMenu.java
   visible: true
   placeholders:
-  - offset: 383
-    length: 461
+  - offset: 382
+    length: 4
     placeholder_text: TODO
     initial_state:
       length: 4
@@ -102,8 +102,8 @@ files:
                       this.printMenu();
                   }
               }
-    selected: true
-    status: Failed
+    selected: false
+    status: Unchecked
   text: |
     import java.util.InputMismatchException;
     import java.util.Scanner;
@@ -138,6 +138,6 @@ files:
         }
     }
   learner_created: false
-status: Failed
+status: Unchecked
 record: -1
 solution_hidden: true

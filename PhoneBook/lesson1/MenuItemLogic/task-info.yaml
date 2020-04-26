@@ -115,7 +115,7 @@ files:
   visible: true
   placeholders:
   - offset: 0
-    length: 160
+    length: 101
     placeholder_text: '//TODO: Тут вы должны реализовать интерфейс позволяющий шаблонизировать
       работу и вызов элементов меню'
     initial_state:
@@ -126,8 +126,8 @@ files:
       public interface MenuItemExecutor {
           void execute();
       }
-    selected: true
-    status: Failed
+    selected: false
+    status: Unchecked
   text: '//TODO: Тут вы должны реализовать интерфейс позволяющий шаблонизировать работу
     и вызов элементов меню'
   learner_created: false
@@ -153,8 +153,8 @@ files:
       offset: 757
     initialized_from_dependency: false
     possible_answer: '                this.items.get(choiceNumber - 1).interact();'
-    selected: true
-    status: Failed
+    selected: false
+    status: Unchecked
   text: |
     import java.util.InputMismatchException;
     import java.util.Scanner;
@@ -195,7 +195,7 @@ files:
   visible: true
   placeholders:
   - offset: 0
-    length: 519
+    length: 201
     placeholder_text: "//TODO: Данный класс должен отвечать за обработку ввходных\
       \ данных в формате - \nИванов Иван Иванович; 18.06.1983; 34; 6.45; \\\"Работ\
       ал над проектами: \\\"\\\"АБС\\\"\\\"; \\\"\\\"КВД\\\"\\\"\\\"\nи создание о\
@@ -240,8 +240,8 @@ files:
               }
           }
       }
-    selected: true
-    status: Failed
+    selected: false
+    status: Unchecked
   text: "//TODO: Данный класс должен отвечать за обработку ввходных данных в форма\
     те - \nИванов Иван Иванович; 18.06.1983; 34; 6.45; \\\"Работал над проектами:\
     \ \\\"\\\"АБС\\\"\\\"; \\\"\\\"КВД\\\"\\\"\\\"\nи создание объекта Contact"
@@ -249,8 +249,8 @@ files:
 - name: src/Contact.java
   visible: true
   placeholders:
-  - offset: 264
-    length: 273
+  - offset: 263
+    length: 269
     placeholder_text: |-
       //TODO: тут вы должны создать конструктор который конвертирует строковые значения полученые в ходе разбора входных данных.
       Иванов Иван Иванович; 18.06.1983; 34; 6.45; \"Работал над проектами: \"\"АБС\"\"; \"\"КВД\"\"\"
@@ -268,8 +268,8 @@ files:
               this.rating = Float.parseFloat(rating);
               this.comments = comments;
           }
-    selected: true
-    status: Failed
+    selected: false
+    status: Unchecked
   text: |
     import java.text.ParseException;
     import java.text.SimpleDateFormat;
@@ -298,6 +298,6 @@ files:
         }
     }
   learner_created: false
-status: Failed
+status: Unchecked
 record: -1
 solution_hidden: true

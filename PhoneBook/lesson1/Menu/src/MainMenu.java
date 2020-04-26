@@ -16,16 +16,6 @@ public class MainMenu extends AbstractMenu {
 
     @Override
     public void interactWithMenu() {
-
-        Scanner scanner = new Scanner(System.in);
-        if (scanner.hasNext()) {
-            try {
-                int choiceNumber = scanner.nextInt();
-                System.out.println("Your input " + choiceNumber);
-            } catch (InputMismatchException mismatchException) {
-                System.out.println("Неправильнный ввод данных. Пожалуйста введите число соотвествующее пункту меню");
-                this.printMenu();
-            }
-        }
+TODO
     }
 }

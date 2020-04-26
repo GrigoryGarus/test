@@ -25,8 +25,6 @@ public class MainMenu extends AbstractMenu {
 
 //TODO: тут вы должны реализовать выбор меню без использования циклов. Подсказкой будет использование индексов списка
 
-                        this.items.get(choiceNumber-1).print();
-
             } catch (InputMismatchException mismatchException) {
                 System.out.println("Invalid input data");
                 this.printMenu();
